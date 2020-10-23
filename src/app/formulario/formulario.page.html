@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Formulario</ion-title>
     <ion-buttons slot="start">
@@ -7,8 +7,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    <p>Aquí va el formulario</p>
-  </div>
+<ion-content padding class="form-content">
+  <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+    <ion-item>
+      <ion-label position="floating" color="primary">DNI</ion-label>
+      <ion-input type="text" formControlName="dni"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="primary">IBAN</ion-label>
+      <ion-input type="text" formControlName="iban"></ion-input>
+    </ion-item>
+    <ion-button color="primary" class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">
+      Aceptar</ion-button>
+  </form>
 </ion-content>
